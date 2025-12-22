@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Search, Network } from 'lucide-react';
+import { Menu, X, Sun, Moon, Network } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,12 +9,21 @@ export const Header: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (darkMode) {
+    const isDark = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(isDark);
+    if (isDark) document.documentElement.classList.add('dark');
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem('darkMode', String(newMode));
+    if (newMode) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [darkMode]);
+  };
 
   const navLinks = [
     { name: 'Trang chủ', path: '/' },
@@ -27,8 +36,8 @@ export const Header: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <Link to="/" className="flex items-center gap-2 text-xl font-bold text-brand dark:text-brand-light">
-            <Network className="w-6 h-6" />
-            <span>DevNetwork</span>
+            <Network className="w-7 h-7" />
+            <span className="tracking-tight">BBaoHG</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -45,8 +54,9 @@ export const Header: React.FC = () => {
               </Link>
             ))}
             <button
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={toggleDarkMode}
               className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              aria-label="Toggle Dark Mode"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -55,7 +65,7 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
             <button
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={toggleDarkMode}
               className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}

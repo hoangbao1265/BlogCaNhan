@@ -23,13 +23,13 @@ const App: React.FC = () => {
         
         <footer className="py-12 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
           <div className="max-w-6xl mx-auto px-4 text-center space-y-4">
-            <p className="text-slate-500 text-sm">
-              © {new Date().getFullYear()} DevNetwork Blog. Được xây dựng với đam mê và Code.
+            <p className="text-slate-500 text-sm font-medium">
+              © {new Date().getFullYear()} BBaoHG Blog. Crafting knowledge for the network age.
             </p>
             <div className="flex justify-center gap-6 text-slate-400">
-              <a href="#" className="hover:text-brand transition-colors text-sm">Privacy Policy</a>
-              <a href="#" className="hover:text-brand transition-colors text-sm">Terms of Service</a>
-              <a href="#" className="hover:text-brand transition-colors text-sm">Github Source</a>
+              <a href="#" className="hover:text-brand transition-colors text-sm">Chính sách bảo mật</a>
+              <a href="#" className="hover:text-brand transition-colors text-sm">Điều khoản sử dụng</a>
+              <a href="https://github.com" className="hover:text-brand transition-colors text-sm">Mã nguồn</a>
             </div>
           </div>
         </footer>

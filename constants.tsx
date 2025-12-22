@@ -2,273 +2,195 @@
 import { Post, Profile } from './types';
 
 export const MY_PROFILE: Profile = {
-  name: "Nguyễn Văn A",
-  title: "Senior Software Engineer & Network Enthusiast",
-  bio: "Tôi là một kỹ sư phần mềm với hơn 5 năm kinh nghiệm, chuyên sâu về hệ thống phân tán và lập trình mạng. Tôi đam mê việc tối ưu hóa hiệu năng hệ thống và chia sẻ kiến thức cộng đồng.",
+  name: "Bao Hoang",
+  title: "Software Engineer & Networking Specialist",
+  bio: "Tôi là một kỹ sư phần mềm chuyên về phát triển backend với Java và các giải pháp giao tiếp thời gian thực bằng JavaScript. BBaoHG là nơi tôi ghi lại hành trình khám phá các tầng sâu của mạng máy tính và tối ưu hóa hệ thống.",
   skills: [
-    { name: "Java (Spring Boot, Multithreading)", level: 90 },
-    { name: "JavaScript (React, Node.js)", level: 85 },
-    { name: "Network Programming (TCP/IP, WebSocket)", level: 80 },
-    { name: "Docker & Kubernetes", level: 75 },
-    { name: "System Design", level: 80 }
+    { name: "Java (Spring Ecosystem, Concurrency)", level: 92 },
+    { name: "JavaScript (Node.js, TypeScript)", level: 88 },
+    { name: "Network Security (SSL/TLS, OAuth2)", level: 85 },
+    { name: "Infrastructure (Docker, K8s, Nginx)", level: 80 },
+    { name: "API Design (gRPC, REST, GraphQL)", level: 90 }
   ],
   courses: [
-    { name: "Java Professional Developer", provider: "Oracle", year: "2021" },
-    { name: "Fullstack JavaScript Mastery", provider: "Udemy", year: "2022" },
-    { name: "Network Security & Protocols", provider: "Cisco Networking Academy", year: "2020" }
+    { name: "Advanced Java Performance Tuning", provider: "Baeldung", year: "2023" },
+    { name: "Cisco Certified Network Associate (CCNA)", provider: "Cisco", year: "2021" },
+    { name: "Full Stack Development with React", provider: "Meta", year: "2022" }
   ],
   social: {
     github: "https://github.com",
     linkedin: "https://linkedin.com",
     twitter: "https://twitter.com",
-    email: "mailto:contact@example.com"
+    email: "mailto:contact@bbaohg.com"
   }
 };
 
 export const BLOG_POSTS: Post[] = [
   {
-    id: 'java-oop-basic',
-    title: 'Lập trình hướng đối tượng (OOP) trong Java',
-    excerpt: 'Tìm hiểu 4 trụ cột chính của OOP: Đóng gói, Kế thừa, Đa hình và Trừu tượng trong Java.',
+    id: 'java-oop-deep-dive',
+    title: 'Đào sâu về 4 trụ cột OOP trong Java: Thực tế và Ứng dụng',
+    excerpt: 'Không chỉ là lý thuyết suông, bài viết này sẽ phân tích cách áp dụng tính Đóng gói, Kế thừa, Đa hình và Trừu tượng trong các dự án thực tế quy mô lớn.',
     category: 'Java',
-    tags: ['OOP', 'Core Java'],
+    tags: ['OOP', 'Core Java', 'Software Architecture'],
     date: '2024-03-20',
-    readTime: '8 phút',
+    readTime: '15 phút',
     featured: true,
     content: `
-# Lập trình hướng đối tượng (OOP) trong Java
+# Đào sâu về 4 trụ cột OOP trong Java
 
-Lập trình hướng đối tượng (Object-Oriented Programming - OOP) là một mô hình lập trình dựa trên khái niệm về "đối tượng", có thể chứa dữ liệu và mã nguồn.
+Lập trình hướng đối tượng (OOP) thường bị hiểu nhầm là chỉ xoay quanh việc tạo class. Thực tế, nó là một tư duy tổ chức mã nguồn giúp hệ thống linh hoạt và dễ mở rộng.
 
-## 1. Tính Đóng Gói (Encapsulation)
-Giúp che giấu các thông tin chi tiết bên trong đối tượng và chỉ để lộ ra những gì cần thiết thông qua các phương thức public (getters/setters).
+## 1. Tính Đóng Gói (Encapsulation) - Bảo mật trạng thái
+Tính đóng gói không chỉ là việc đặt biến là \`private\` và tạo \`getter/setter\`. Mục tiêu thực sự là bảo vệ tính toàn vẹn của dữ liệu.
+
+Ví dụ, nếu bạn có một lớp \`BankAccount\`, bạn không muốn ai đó thay đổi số dư trực tiếp. Thay vào đó, bạn cung cấp phương thức \`deposit()\` để kiểm tra tính hợp lệ trước khi cộng tiền.
 
 \`\`\`java
-public class Person {
-    private String name;
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-}
-\`\`\`
+public class BankAccount {
+    private double balance;
 
-## 2. Tính Kế Thừa (Inheritance)
-Cho phép một lớp mới kế thừa các thuộc tính và phương thức từ một lớp đã có.
-
-## 3. Tính Đa Hình (Polymorphism)
-Cho phép một đối tượng có thể thực hiện một hành động theo nhiều cách khác nhau.
-
-## 4. Tính Trừu Tượng (Abstraction)
-Tập trung vào những gì đối tượng làm thay vì cách nó làm điều đó thông qua Interface hoặc Abstract Class.
-    `
-  },
-  {
-    id: 'js-async-await',
-    title: 'Xử lý bất đồng bộ với Promise và Async/Await',
-    excerpt: 'Cách viết mã JavaScript bất đồng bộ một cách sạch sẽ và dễ hiểu hơn.',
-    category: 'JavaScript',
-    tags: ['ES6', 'Async'],
-    date: '2024-03-18',
-    readTime: '6 phút',
-    featured: true,
-    content: `
-# Xử lý bất đồng bộ trong JavaScript
-
-JavaScript là ngôn ngữ đơn luồng, nhưng nhờ Event Loop nó có thể xử lý các tác vụ I/O không chặn.
-
-## Tại sao cần Async/Await?
-Trước đây chúng ta dùng Callback dẫn đến tình trạng "Callback Hell". Sau đó Promise ra đời nhưng cú pháp \`.then()\` vẫn còn khá rườm rà khi lồng nhau.
-
-\`\`\`javascript
-async function fetchUserData() {
-    try {
-        const response = await fetch('https://api.example.com/user');
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error("Lỗi:", error);
+    public void deposit(double amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.println("Nạp tiền thành công: " + amount);
+        } else {
+            throw new IllegalArgumentException("Số tiền nạp phải lớn hơn 0");
+        }
     }
 }
 \`\`\`
 
-Sử dụng \`async/await\` giúp mã nguồn trông giống như mã đồng bộ, dễ đọc và dễ bảo trì hơn rất nhiều.
+## 2. Tính Kế Thừa (Inheritance) - Tái sử dụng hay là "Cái bẫy"?
+Kế thừa giúp tái sử dụng mã nguồn, nhưng nếu lạm dụng sẽ dẫn đến "mối liên kết chặt chẽ" (tight coupling). Trong Java, chúng ta nên ưu tiên "Composition over Inheritance" (Ưu tiên thành phần hơn kế thừa).
+
+## 3. Tính Đa Hình (Polymorphism) - Sức mạnh của sự linh hoạt
+Đa hình cho phép chúng ta xử lý các đối tượng khác nhau thông qua một giao diện chung. Điều này cực kỳ hữu ích trong việc xây dựng các plugin hoặc xử lý nhiều loại thanh toán (Credit Card, PayPal, Crypto) mà không cần thay đổi code xử lý chính.
+
+## 4. Tính Trừu Tượng (Abstraction) - Tập trung vào "Cái gì", không phải "Làm thế nào"
+Trừu tượng hóa giúp ẩn đi sự phức tạp của hệ thống. Hãy tưởng tượng bạn đang lái xe, bạn chỉ cần biết cách sử dụng vô lăng (Interface) mà không cần quan tâm động cơ bên trong hoạt động ra sao.
+
+---
+**Kết luận:** Nắm vững OOP giúp bạn viết code không chỉ chạy được, mà còn "sống khỏe" qua nhiều năm bảo trì.
     `
   },
   {
-    id: 'network-tcp-ip',
-    title: 'Hiểu về giao thức TCP/IP và mô hình OSI',
-    excerpt: 'Cơ sở hạ tầng của Internet: Cách dữ liệu được truyền đi qua các tầng mạng.',
-    category: 'Network',
-    tags: ['TCP/IP', 'Networking'],
-    date: '2024-03-15',
-    readTime: '10 phút',
+    id: 'js-async-event-loop',
+    title: 'Giải mã Event Loop: Tại sao JavaScript nhanh dù chỉ có đơn luồng?',
+    excerpt: 'Hiểu rõ cơ chế Microtasks, Macrotasks và cách JavaScript xử lý hàng ngàn request cùng lúc mà không bị block.',
+    category: 'JavaScript',
+    tags: ['Async', 'Performance', 'Engine'],
+    date: '2024-03-25',
+    readTime: '18 phút',
     featured: true,
     content: `
-# Hiểu về giao thức TCP/IP
+# Giải mã Event Loop trong JavaScript
 
-TCP/IP là bộ giao thức cho phép các máy tính kết nối và truyền thông với nhau trên toàn thế giới.
+JavaScript nổi tiếng là ngôn ngữ đơn luồng (Single-threaded). Vậy tại sao nó lại được dùng để xây dựng các hệ thống backend cực nhanh như Node.js? Câu trả lời nằm ở **Event Loop**.
 
-## 1. TCP (Transmission Control Protocol)
-Đảm bảo dữ liệu được truyền đi chính xác, đúng thứ tự và không bị mất mát thông qua cơ chế bắt tay 3 bước (3-way handshake).
+## 1. Cấu trúc bộ nhớ
+- **Call Stack:** Nơi lưu trữ các hàm đang thực thi. Theo cơ chế LIFO (Last In First Out).
+- **Web APIs:** Được trình duyệt (hoặc C++ APIs trong Node) cung cấp để xử lý các tác vụ như \`setTimeout\`, \`fetch\`, DOM events.
+- **Task Queue (Macrotasks):** Chứa các callback từ \`setTimeout\`, \`setInterval\`.
+- **Microtask Queue:** Ưu tiên cao hơn Macrotasks. Chứa các callback từ \`Promise.then\`, \`process.nextTick\`.
 
-## 2. IP (Internet Protocol)
-Xác định địa chỉ gửi và nhận của các gói tin trên mạng.
+## 2. Quy trình của Event Loop
+1. Kiểm tra Call Stack. Nếu trống, chuyển sang bước 2.
+2. Kiểm tra Microtask Queue. Thực thi **tất cả** các task có trong hàng đợi này.
+3. Kiểm tra Macrotask Queue. Thực thi **một** task, sau đó quay lại bước 1.
 
-## Mô hình 4 tầng của TCP/IP:
-1. **Application Layer**: HTTP, FTP, SMTP
-2. **Transport Layer**: TCP, UDP
-3. **Internet Layer**: IP, ICMP
-4. **Network Access Layer**: Ethernet, Wi-Fi
+## 3. Ví dụ kinh điển
+Bạn đoán xem kết quả sẽ là gì?
+\`\`\`javascript
+console.log('1');
+
+setTimeout(() => console.log('2'), 0);
+
+Promise.resolve().then(() => console.log('3'));
+
+console.log('4');
+\`\`\`
+Kết quả là: \`1, 4, 3, 2\`. Tại sao? Vì \`Promise\` vào Microtask Queue, còn \`setTimeout\` vào Macrotask Queue.
+
+## 4. Ứng dụng thực tế
+Khi làm việc với các tác vụ nặng (như xử lý ảnh), nếu bạn chạy nó trực tiếp trên main thread, giao diện sẽ bị "đơ". Hiểu Event Loop giúp bạn biết cách tách các tác vụ này ra (sử dụng Web Workers hoặc chia nhỏ tác vụ với \`setImmediate\`).
+
+---
+Nắm chắc Event Loop là bước ngoặt để từ một coder trở thành một Engineer thực thụ.
     `
   },
   {
-    id: 'java-collections',
-    title: 'Làm chủ Java Collections Framework',
-    excerpt: 'So sánh List, Set, Map và khi nào nên sử dụng loại nào cho hiệu quả.',
-    category: 'Java',
-    tags: ['Collections', 'Data Structures'],
-    date: '2024-03-10',
-    readTime: '7 phút',
+    id: 'network-tcp-deep-dive',
+    title: 'TCP Handshake và bài toán tối ưu hóa độ trễ mạng',
+    excerpt: 'Tại sao kết nối mạng của bạn chậm? Tìm hiểu về quá trình bắt tay 3 bước, cửa sổ trượt (sliding window) và cách tối ưu hóa TCP.',
+    category: 'Network',
+    tags: ['Networking', 'TCP', 'Infrastructure'],
+    date: '2024-04-01',
+    readTime: '20 phút',
+    featured: true,
     content: `
-# Java Collections Framework
+# TCP Handshake và Tối ưu hóa độ trễ
 
-Collections Framework cung cấp một tập hợp các lớp và giao diện để lưu trữ và thao tác với các nhóm đối tượng.
+Trong lập trình mạng, TCP (Transmission Control Protocol) là "xương sống" của hầu hết các ứng dụng. Tuy nhiên, cái giá của sự tin cậy là **độ trễ (latency)**.
 
-- **List**: Cho phép trùng lặp, có thứ tự (ArrayList, LinkedList).
-- **Set**: Không cho phép trùng lặp (HashSet, TreeSet).
-- **Map**: Lưu trữ cặp Key-Value (HashMap, TreeMap).
+## 1. Quá trình bắt tay 3 bước (3-way Handshake)
+Trước khi dữ liệu đầu tiên được gửi đi, Client và Server phải thực hiện:
+1. **SYN:** Client gửi một yêu cầu kết nối.
+2. **SYN-ACK:** Server phản hồi xác nhận.
+3. **ACK:** Client xác nhận lại một lần nữa.
+
+Quá trình này tốn mất 1.5 RTT (Round Trip Time). Nếu RTT của bạn là 100ms, bạn đã mất 150ms chỉ để "chào hỏi".
+
+## 2. TCP Slow Start
+TCP không gửi toàn bộ dữ liệu ngay lập tức. Nó bắt đầu với một lượng nhỏ (Congestion Window) và tăng dần nếu không thấy mất gói tin. Đây là lý do tại sao các file lớn ban đầu tải chậm và sau đó nhanh dần.
+
+## 3. Cách tối ưu hóa
+- **TCP Fast Open (TFO):** Cho phép gửi dữ liệu ngay trong gói SYN đầu tiên.
+- **Keep-Alive:** Giữ kết nối mở để tránh phải bắt tay lại cho mỗi request.
+- **QUIC / HTTP/3:** Sử dụng UDP thay vì TCP để giảm số bước bắt tay và giải quyết vấn đề Head-of-line blocking.
+
+## 4. Tại sao lập trình viên cần biết điều này?
+Khi bạn viết một API, nếu client phải thực hiện quá nhiều kết nối ngắn hạn, độ trễ sẽ tăng vọt. Hiểu về tầng Transport giúp bạn thiết kế kiến trúc hệ thống hiệu quả hơn, biết khi nào dùng gRPC qua HTTP/2 thay vì REST truyền thống.
+
+---
+Mạng máy tính không phải là "ma thuật", nó là một chuỗi các giao thức được tính toán kỹ lưỡng.
+    `
+  },
+  {
+    id: 'java-concurrency-models',
+    title: 'Concurrency trong Java: Từ Thread truyền thống đến Virtual Threads',
+    excerpt: 'Khám phá sự tiến hóa của việc xử lý song song trong Java và tại sao Virtual Threads (Project Loom) là cuộc cách mạng.',
+    category: 'Java',
+    tags: ['Concurrency', 'Java 21', 'Performance'],
+    date: '2024-04-05',
+    readTime: '22 phút',
+    content: `
+# Concurrency trong Java: Sự tiến hóa
+
+Xử lý đa luồng luôn là một trong những phần khó nhất nhưng cũng thú vị nhất của Java.
+
+## 1. Platform Threads (Truyền thống)
+Mỗi luồng Java tương ứng với một luồng hệ điều hành (OS Thread). Điều này rất tốn kém tài nguyên (mất khoảng 1MB bộ nhớ cho mỗi stack). Bạn không thể tạo ra 1 triệu luồng như vậy.
+
+## 2. Thread Pool (ExecutorService)
+Để giải quyết vấn đề trên, chúng ta dùng Thread Pool. Tuy nhiên, nó vẫn bị giới hạn. Nếu một task phải chờ I/O (như gọi database), luồng đó sẽ bị block, gây lãng phí CPU.
+
+## 3. Virtual Threads (Java 21+)
+Đây là "game changer". Virtual Threads cực kỳ nhẹ (chỉ tốn vài KB bộ nhớ). Khi một Virtual Thread bị block bởi I/O, Java runtime sẽ tự động ngắt nó ra khỏi OS Thread và cho task khác vào chạy.
 
 \`\`\`java
-List<String> list = new ArrayList<>();
-list.add("Java");
-list.add("JavaScript");
-
-Map<Integer, String> map = new HashMap<>();
-map.put(1, "Network");
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    IntStream.range(0, 10_000).forEach(i -> {
+        executor.submit(() -> {
+            Thread.sleep(Duration.ofSeconds(1));
+            return i;
+        });
+    });
+}
 \`\`\`
-    `
-  },
-  {
-    id: 'js-dom-manipulation',
-    title: 'Thao tác DOM hiệu quả trong JavaScript thuần',
-    excerpt: 'Kỹ thuật tương tác với giao diện người dùng mà không cần thư viện bên ngoài.',
-    category: 'JavaScript',
-    tags: ['DOM', 'Vanilla JS'],
-    date: '2024-03-05',
-    readTime: '5 phút',
-    content: `
-# Thao tác DOM với JavaScript
+Đoạn code trên có thể chạy 10,000 task song song chỉ trong tích tắc mà không làm "treo" máy.
 
-DOM (Document Object Model) là giao diện lập trình cho các tài liệu HTML.
-
-## Lựa chọn phần tử
-\`\`\`javascript
-const element = document.querySelector('.my-class');
-const btn = document.getElementById('submit-btn');
-\`\`\`
-
-## Lắng nghe sự kiện
-\`\`\`javascript
-btn.addEventListener('click', (e) => {
-    console.log('Button clicked!');
-    element.textContent = 'Updated content';
-});
-\`\`\`
-    `
-  },
-  {
-    id: 'network-http-https',
-    title: 'Cơ chế hoạt động của HTTP và HTTPS',
-    excerpt: 'Sự khác biệt giữa giao thức không bảo mật và bảo mật, cùng quá trình TLS Handshake.',
-    category: 'Network',
-    tags: ['HTTP', 'Security'],
-    date: '2024-03-01',
-    readTime: '9 phút',
-    content: `
-# HTTP vs HTTPS
-
-HTTP (Hypertext Transfer Protocol) là nền tảng của World Wide Web. HTTPS là phiên bản bảo mật của nó.
-
-## Tại sao cần HTTPS?
-- **Mã hóa**: Ngăn chặn kẻ tấn công đọc nội dung.
-- **Toàn vẹn**: Đảm bảo dữ liệu không bị thay đổi trên đường truyền.
-- **Xác thực**: Đảm bảo bạn đang kết nối đúng website mong muốn.
-
-HTTPS sử dụng TLS (Transport Layer Security) để thiết lập kết nối an toàn thông qua các chứng chỉ số (SSL Certificates).
-    `
-  },
-  {
-    id: 'java-multithreading',
-    title: 'Đa luồng trong Java từ cơ bản đến nâng cao',
-    excerpt: 'Xử lý song song với Thread, Runnable và Executor Service.',
-    category: 'Java',
-    tags: ['Multithreading', 'Concurrency'],
-    date: '2024-02-25',
-    readTime: '12 phút',
-    content: `
-# Đa luồng (Multithreading) trong Java
-
-Lập trình đa luồng cho phép thực thi nhiều phần của chương trình cùng một lúc để tối đa hóa việc sử dụng CPU.
-
-## Executor Service
-Thay vì quản lý Thread thủ công, hãy sử dụng Thread Pool:
-
-\`\`\`java
-ExecutorService executor = Executors.newFixedThreadPool(10);
-executor.execute(() -> {
-    System.out.println("Tác vụ đang chạy trong luồng mới");
-});
-executor.shutdown();
-\`\`\`
-    `
-  },
-  {
-    id: 'js-node-basics',
-    title: 'Bắt đầu với Node.js cho lập trình mạng',
-    excerpt: 'Xây dựng Server đơn giản với module HTTP và File System trong Node.js.',
-    category: 'JavaScript',
-    tags: ['Node.js', 'Backend'],
-    date: '2024-02-20',
-    readTime: '8 phút',
-    content: `
-# Node.js: JavaScript ở phía Server
-
-Node.js là một môi trường thực thi JavaScript xây dựng trên engine V8 của Chrome.
-
-## Tạo Web Server đơn giản
-\`\`\`javascript
-const http = require('http');
-
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World\\n');
-});
-
-server.listen(3000, '127.0.0.1', () => {
-    console.log('Server đang chạy tại http://127.0.0.1:3000/');
-});
-\`\`\`
-    `
-  },
-  {
-    id: 'network-websocket',
-    title: 'Giao tiếp thời gian thực với WebSocket',
-    excerpt: 'Khi nào nên dùng WebSocket thay vì HTTP Polling cho các ứng dụng Real-time.',
-    category: 'Network',
-    tags: ['WebSocket', 'Real-time'],
-    date: '2024-02-15',
-    readTime: '7 phút',
-    content: `
-# WebSocket: Kết nối hai chiều
-
-WebSocket cung cấp một kênh giao tiếp song công (full-duplex) qua một kết nối TCP duy nhất.
-
-## Ưu điểm
-- Độ trễ thấp.
-- Ít tốn băng thông (overhead thấp hơn HTTP).
-- Server có thể chủ động gửi dữ liệu tới Client.
-
-Phù hợp cho: App chat, Bảng giá chứng khoán, Game online đa người chơi.
+---
+Kỷ nguyên mới của Java đã đến, nơi chúng ta có thể viết mã đồng bộ nhưng thực thi bất đồng bộ một cách cực kỳ hiệu quả.
     `
   }
 ];
