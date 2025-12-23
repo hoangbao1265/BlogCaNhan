@@ -2,7 +2,7 @@
 
 Chào mừng đến với **BBaoHG Blog** - Website cá nhân nơi mình chia sẻ về hành trình trở thành một Full Stack Software Engineer, các kiến thức lập trình (Java, C/C++, Network...) và sở thích cá nhân.
 
-🔗 **Live Demo:** [https://hoangbao1265.github.io/BaoHG_Blog/](https://hoangbao1265.github.io/BaoHG_Blog/)
+🔗 **Live Demo:** [https://hoangbao1265.github.io/BlogCaNhan/](https://hoangbao1265.github.io/BlogCaNhan/)
 
 ---
 
