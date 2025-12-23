@@ -26,9 +26,10 @@ export const Header: React.FC = () => {
   };
 
   const navLinks = [
-    { name: 'Trang chủ', path: '/' },
+    { name: 'Home', path: '/' },
     { name: 'Blog', path: '/blog' },
-    { name: 'Giới thiệu', path: '/about' },
+    { name: 'Certificates', path: '/certificates' },
+    { name: 'About', path: '/about' },
   ];
 
   return (
@@ -36,7 +37,6 @@ export const Header: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <Link to="/" className="flex items-center gap-2 text-xl font-bold text-brand dark:text-brand-light">
-            <Network className="w-7 h-7" />
             <span className="tracking-tight">BBaoHG</span>
           </Link>
 
@@ -46,9 +46,8 @@ export const Header: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-brand ${
-                  location.pathname === link.path ? 'text-brand' : 'text-slate-600 dark:text-slate-400'
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-brand ${location.pathname === link.path ? 'text-brand' : 'text-slate-600 dark:text-slate-400'
+                  }`}
               >
                 {link.name}
               </Link>

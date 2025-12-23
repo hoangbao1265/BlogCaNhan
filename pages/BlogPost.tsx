@@ -1,5 +1,6 @@
 
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { BLOG_POSTS } from '../constants';
@@ -7,9 +8,15 @@ import { BLOG_POSTS } from '../constants';
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  
+
   const postIndex = BLOG_POSTS.findIndex(p => p.id === id);
   const post = BLOG_POSTS[postIndex];
+
+  React.useEffect(() => {
+    if (post) {
+      document.title = `${post.title} | BBaoHG`;
+    }
+  }, [post]);
 
   if (!post) {
     return (
@@ -27,8 +34,8 @@ const BlogPost: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <Link 
-        to="/blog" 
+      <Link
+        to="/blog"
         className="inline-flex items-center gap-2 text-slate-500 hover:text-brand mb-8 transition-colors"
       >
         <ArrowLeft size={18} /> Quay lại danh sách
@@ -50,31 +57,28 @@ const BlogPost: React.FC = () => {
           </h1>
         </header>
 
-        {/* Content Rendering Simulation */}
+        {/* Content Rendering with basic markdown + code block support */}
         <div className="prose prose-slate dark:prose-invert max-w-none prose-lg">
-          {/* We use pre-defined simple markdown-like formatting for demonstration */}
-          {post.content.split('\n').map((line, idx) => {
-            if (line.startsWith('# ')) return <h1 key={idx} className="text-3xl font-bold mt-8 mb-4">{line.replace('# ', '')}</h1>;
-            if (line.startsWith('## ')) return <h2 key={idx} className="text-2xl font-bold mt-8 mb-4">{line.replace('## ', '')}</h2>;
-            if (line.startsWith('### ')) return <h3 key={idx} className="text-xl font-bold mt-6 mb-3">{line.replace('### ', '')}</h3>;
-            if (line.startsWith('```')) return null; // Logic below handles code blocks
-            if (line.trim() === '') return <br key={idx} />;
-            
-            // Simple logic for code blocks simulation in content
-            if (post.content.includes('```')) {
-              const codeBlocks = post.content.match(/```[\s\S]*?```/g);
-              // This is a simplified display for this component context
-            }
-
-            return <p key={idx} className="mb-4 text-slate-700 dark:text-slate-300 leading-relaxed">{line}</p>;
-          })}
+          <ReactMarkdown
+            components={{
+              h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
+              h2: ({ node, ...props }) => <h2 className="text-2xl font-bold mt-8 mb-4 border-b border-slate-200 dark:border-slate-800 pb-2" {...props} />,
+              h3: ({ node, ...props }) => <h3 className="text-xl font-bold mt-6 mb-3" {...props} />,
+              ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-1" {...props} />,
+              ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-4 space-y-1" {...props} />,
+              li: ({ node, ...props }) => <li className="pl-1" {...props} />,
+              blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-brand/50 pl-4 italic text-slate-600 dark:text-slate-400 mb-4" {...props} />,
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
         </div>
       </article>
 
       {/* Navigation */}
       <div className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between gap-6">
         {prevPost ? (
-          <Link 
+          <Link
             to={`/blog/${prevPost.id}`}
             className="flex flex-col p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-brand transition-all flex-1 text-left group"
           >
@@ -86,7 +90,7 @@ const BlogPost: React.FC = () => {
         ) : <div className="flex-1" />}
 
         {nextPost ? (
-          <Link 
+          <Link
             to={`/blog/${nextPost.id}`}
             className="flex flex-col p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-brand transition-all flex-1 text-right group"
           >
@@ -102,3 +106,5 @@ const BlogPost: React.FC = () => {
 };
 
 export default BlogPost;
+
+

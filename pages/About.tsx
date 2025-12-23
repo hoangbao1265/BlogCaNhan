@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Github, Linkedin, Twitter, Mail, ExternalLink, Download, Award, User } from 'lucide-react';
 import { MY_PROFILE } from '../constants';
 
@@ -33,47 +34,67 @@ const About: React.FC = () => {
         <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
           <Award className="text-brand" /> Kỹ năng chuyên môn
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-          {MY_PROFILE.skills.map((skill) => (
-            <div key={skill.name}>
-              <div className="flex justify-between mb-2">
-                <span className="font-medium">{skill.name}</span>
-                <span className="text-slate-500 text-sm">{skill.level}%</span>
-              </div>
-              <div className="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-brand transition-all duration-1000" 
-                  style={{ width: `${skill.level}%` }}
-                />
-              </div>
-            </div>
+        <motion.div
+          className="flex flex-wrap gap-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          {MY_PROFILE.skills.map((skill, idx) => (
+            <motion.div
+              key={idx}
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 }
+              }}
+              className="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 font-medium hover:bg-brand/10 hover:text-brand transition-colors"
+            >
+              {skill}
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
-      {/* Courses */}
+      {/* Hobbies */}
       <section>
         <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-          <ExternalLink className="text-brand" /> Khóa học & Chứng chỉ
+          <User className="text-brand" /> Sở thích cá nhân
         </h2>
-        <div className="space-y-4">
-          {MY_PROFILE.courses.map((course, idx) => (
-            <div key={idx} className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex justify-between items-center">
-              <div>
-                <h3 className="font-bold">{course.name}</h3>
-                <p className="text-slate-500 text-sm">{course.provider}</p>
-              </div>
-              <span className="text-sm font-medium text-brand">{course.year}</span>
-            </div>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+          }}
+        >
+          {MY_PROFILE.hobbies.map((hobby, idx) => (
+            <motion.div
+              key={idx}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-brand transition-all"
+            >
+              <h3 className="font-bold text-lg mb-2 text-brand">{hobby.name}</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{hobby.description}</p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Contact CTA */}
       <section className="bg-brand/5 dark:bg-brand/10 p-8 rounded-3xl text-center space-y-4">
         <h2 className="text-2xl font-bold">Bạn có ý tưởng dự án?</h2>
         <p className="text-slate-600 dark:text-slate-400">Hãy liên hệ với tôi để cùng nhau xây dựng những hệ thống mạng tuyệt vời.</p>
-        <a 
+        <a
           href={MY_PROFILE.social.email}
           className="inline-flex items-center gap-2 px-8 py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand-dark transition-all"
         >

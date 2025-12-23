@@ -22,14 +22,22 @@ export interface Course {
   name: string;
   provider: string;
   year: string;
+  image: string;
+  pdf: string;
+}
+
+export interface Hobby {
+  name: string;
+  description: string;
 }
 
 export interface Profile {
   name: string;
   title: string;
   bio: string;
-  skills: Skill[];
+  skills: string[];
   courses: Course[];
+  hobbies: Hobby[];
   social: {
     github: string;
     linkedin: string;
