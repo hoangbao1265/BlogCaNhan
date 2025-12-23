@@ -18,29 +18,29 @@ export const MY_PROFILE: Profile = {
       name: "Introduction to Cybersecurity",
       provider: "Cisco",
       year: "2025",
-      image: "/BaoHG_Blog/images/introduction-to-cybersecurity.png",
-      pdf: "/BaoHG_Blog/images/I2CSUpdate20251223-33-zuabsk.pdf"
+      image: `${import.meta.env.BASE_URL}images/introduction-to-cybersecurity.png`,
+      pdf: `${import.meta.env.BASE_URL}images/I2CSUpdate20251223-33-zuabsk.pdf`
     },
     {
       name: "JavaScript Essentials 1",
       provider: "Cisco",
       year: "2025",
-      image: "/BaoHG_Blog/images/javascript-essentials-1.png",
-      pdf: "/BaoHG_Blog/images/JavaScriptEssentials1Update20251118-33-73cwwq.pdf"
+      image: `${import.meta.env.BASE_URL}images/javascript-essentials-1.png`,
+      pdf: `${import.meta.env.BASE_URL}images/JavaScriptEssentials1Update20251118-33-73cwwq.pdf`
     },
     {
       name: "JavaScript Essentials 2",
       provider: "Cisco",
       year: "2025",
-      image: "/BaoHG_Blog/images/javascript-essentials-2.png",
-      pdf: "/BaoHG_Blog/images/JavaScriptEssentials2Update20251126-31-7irat5.pdf"
+      image: `${import.meta.env.BASE_URL}images/javascript-essentials-2.png`,
+      pdf: `${import.meta.env.BASE_URL}images/JavaScriptEssentials2Update20251126-31-7irat5.pdf`
     },
     {
       name: "Networking Basics",
       provider: "Cisco",
       year: "2025",
-      image: "/BaoHG_Blog/images/networking-basics.png",
-      pdf: "/BaoHG_Blog/images/NetworkingBasicsUpdate20251118-31-qscqx6.pdf"
+      image: `${import.meta.env.BASE_URL}images/networking-basics.png`,
+      pdf: `${import.meta.env.BASE_URL}images/NetworkingBasicsUpdate20251118-31-qscqx6.pdf`
     }
   ],
   social: {
