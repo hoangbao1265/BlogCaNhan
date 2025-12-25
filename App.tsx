@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
@@ -66,7 +66,7 @@ const AnimatedRoutes: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
@@ -82,7 +82,7 @@ const App: React.FC = () => {
           </div>
         </footer>
       </div>
-    </Router>
+    </>
   );
 };
 

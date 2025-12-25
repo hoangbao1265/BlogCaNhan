@@ -26,8 +26,8 @@ Chào mừng đến với **BBaoHG Blog** - Website cá nhân nơi mình chia s�
 
 1.  **Clone dự án**:
     ```bash
-    git clone https://github.com/hoangbao1265/BaoHG_Blog.git
-    cd BaoHG_Blog
+    git clone https://github.com/hoangbao1265/BlogCaNhan.git
+    cd BlogCaNhan
     ```
 
 2.  **Cài đặt dependencies**:
@@ -54,7 +54,7 @@ Lệnh này sẽ tự động build (`npm run build`) và đẩy thư mục `dis
 ## 📂 Cấu trúc dự án
 
 ```
-BaoHG_Blog/
+BlogCaNhan/
 ├── public/              # Static assets (images, PDFs...)
 ├── src/
 │   ├── components/      # Common components (Header, Footer, Transitions...)
