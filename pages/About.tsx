@@ -10,7 +10,7 @@ const About: React.FC = () => {
       {/* Introduction */}
       <section className="flex flex-col md:flex-row gap-12 items-center md:items-start">
         <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-xl shrink-0">
-          <img src="https://picsum.photos/400/400" alt={MY_PROFILE.name} className="w-full h-full object-cover" />
+          <img src={`${import.meta.env.BASE_URL}images/profile.png`} alt={MY_PROFILE.name} className="w-full h-full object-cover" />
         </div>
         <div className="space-y-6">
           <div>
