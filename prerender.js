@@ -61,24 +61,10 @@ async function main() {
     console.log('Pre-rendering routes:', routesToPrerender);
 
     for (const url of routesToPrerender) {
-        const fullUrl = url.startsWith('/') ? BASE.replace(/\/$/, '') + url : BASE + url;
-        // Wait, StaticRouter expects the path relative to the app structure usually?
-        // If I pass /blog/id, StaticRouter matches it against Routes.
-        // The BASE provided to vite is /BlogCaNhan/.
+        // Construct full URL matching the basename expected by StaticRouter
+        const fullUrl = url === '/' ? BASE : BASE + url.substring(1);
 
-        // In App.tsx code: <Route path="/blog/:id" ... />
-        // If I visit /BlogCaNhan/blog/123, does React Router see /blog/123 or /BlogCaNhan/blog/123?
-        // With BrowserRouter + basename set? I didn't set basename in entry-client.
-        // But I set 'base' in vite.config.ts.
-
-        // IMPORTANT: I should set basename in BrowsersRouter and StaticRouter to BASE.
-        // Let's assume standard behavior:
-        // If <StaticRouter location="/blog/abc" basename="/BlogCaNhan/"> ...
-
-        // I need to update my entry points to handle basename.
-        // For now, let's assume I pass the simple path (e.g. /blog/abc) and handle basename in the Router.
-
-        const appHtml = await render(url); // Passing URL like /blog/abc
+        const appHtml = await render(fullUrl);
 
         // Inject the app-rendered HTML into the template.
         const html = template.replace(`<!--ssr-outlet-->`, appHtml);
